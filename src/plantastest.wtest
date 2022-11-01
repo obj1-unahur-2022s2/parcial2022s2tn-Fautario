@@ -1,0 +1,18 @@
+import plantas.*
+describe "Test de Plantas"  {
+	
+	const menta1 = new Menta()
+	
+	method initialize() {
+		menta1.valor(3)
+	}
+	
+	test "Menta - test de ejemplo" {
+		assert.equals(3, menta1.valor())
+
+	}
+	
+}
+
+
+
