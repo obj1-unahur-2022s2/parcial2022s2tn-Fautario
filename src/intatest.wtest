@@ -1,0 +1,38 @@
+import inta.*
+import plantas.*
+import parcelas.*
+
+describe "Test del Inta" {
+	const menta1 = new Menta(altura = 1, anioObtencion = 2010)
+	const menta2 = new Menta(altura = 0.3, anioObtencion = 2010)
+	const soja1 = new Soja(altura = 0.6, anioObtencion = 2009)
+	const quinoa1 = new Quinoa(altura = 1, anioObtencion = 2010, horasSolQueTolera = 12)
+	const quinoa2 = new Quinoa(altura = 1, anioObtencion = 2001, horasSolQueTolera = 9)
+	const sojaTransgenica1 = new SojaTransgenica(altura = 2, anioObtencion = 2009)
+	const hierbaBuena1 = new HierbaBuena(altura = 1, anioObtencion = 2010)
+	const hierbaBuena2 = new HierbaBuena(altura = 2, anioObtencion = 2010)
+	const menta3 = new Menta(altura = 2, anioObtencion = 2010)
+	
+	const parcela1 = new Parcela(ancho = 25, largo = 1, horasSolPorDia = 7, tipoParcela = ecologica, plantasQueTiene = [menta1, quinoa1, hierbaBuena1,menta3,hierbaBuena2])
+	const parcela2 = new Parcela(ancho = 5, largo = 1, horasSolPorDia = 8, tipoParcela = industrial, plantasQueTiene = [sojaTransgenica1])
+	const parcela3 = new Parcela(ancho = 5, largo = 2, horasSolPorDia = 7, tipoParcela = ecologica, plantasQueTiene = [soja1, menta1])
+	const parcela4 = new Parcela(ancho = 20, largo = 1, horasSolPorDia = 15, tipoParcela = industrial, plantasQueTiene = [menta1, quinoa1, hierbaBuena1, sojaTransgenica1])
+	const parcela5 = new Parcela(ancho = 6, largo = 5, horasSolPorDia = 8, tipoParcela = ecologica, plantasQueTiene = [menta1, quinoa1, hierbaBuena1,soja1,sojaTransgenica1,menta2])
+	
+	method initialize() {
+		inta.agregarParcela(parcela1)
+		inta.agregarParcela(parcela2)
+		inta.agregarParcela(parcela3)
+		inta.agregarParcela(parcela4)
+		inta.agregarParcela(parcela5)
+	}
+	
+	test "Inta /promedioPlantasPorParcela/" {
+		assert.equals(3.6, inta.promedioPlantasPorParcela())
+	}
+	
+	test "Inta /parcelaMasSustentable/" {
+		assert.equals(parcela1, inta.parcelaMasSustentable())
+	}
+	
+}
