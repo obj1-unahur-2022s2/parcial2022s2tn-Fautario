@@ -1,17 +1,76 @@
 import plantas.*
+import parcelas.*
+
 describe "Test de Plantas"  {
 	
-	const menta1 = new Menta()
+	const menta1 = new Menta(altura = 1, anioObtencion = 2010)
+	const menta2 = new Menta(altura = 0.3, anioObtencion = 2010)
+	const soja1 = new Soja(altura = 0.6, anioObtencion = 2009)
+	const quinoa1 = new Quinoa(altura = 1, anioObtencion = 2010, horasSolQueTolera = 12)
+	const quinoa2 = new Quinoa(altura = 1, anioObtencion = 2001, horasSolQueTolera = 9)
+	const sojaTransgenica1 = new SojaTransgenica(altura = 2, anioObtencion = 2009)
+	const hierbaBuena1 = new HierbaBuena(altura = 1, anioObtencion = 2010)
 	
-	method initialize() {
-		menta1.valor(3)
+	const parcela1 = new Parcela(ancho = 20, largo = 1, horasSolPorDia = 7, tipoParcela = ecologica)
+	const parcela2 = new Parcela(ancho = 5, largo = 1, horasSolPorDia = 8, tipoParcela = industrial)
+	
+	test "menta1 y hierbaBuena1 seAsociaBien con parcela 1 que es ecologica" {
+		assert.that(menta1.seAsociaBien(parcela1))
+		assert.that(hierbaBuena1.seAsociaBien(parcela1))
 	}
 	
-	test "Menta - test de ejemplo" {
-		assert.equals(3, menta1.valor())
-
+	test "soja1 no /seAsociaBien/ con parcela2 porque es industrial y soja1 no es fuerte" {
+		assert.notThat(soja1.esFuerte())
+		assert.notThat(soja1.seAsociaBien(parcela2))
 	}
 	
+	test "menta1 y hierbaBuena1 parcela ideal parcela1" {
+		assert.that(menta1.esParcelaIdeal(parcela1))
+		assert.that(hierbaBuena1.esParcelaIdeal(parcela1))
+	}
+	
+	test "quinoa1 parcela ideal parcela1" {
+		assert.that(quinoa1.esParcelaIdeal(parcela1))
+	}
+	
+	test "soja1 parcela ideal parcela1 y no parcela ideal parcela2" {
+		assert.that(soja1.esParcelaIdeal(parcela1))
+		assert.notThat(soja1.esParcelaIdeal(parcela2))
+	}
+	
+	test "sojaTransgenica1 parcela ideal parcela2" {
+		assert.that(sojaTransgenica1.esParcelaIdeal(parcela2))
+	}
+	
+	test "Menta1 /daNuevasSemillas/ y /espacioOcupado/" {
+		assert.that(menta1.daNuevasSemillas())
+		assert.equals(3, menta1.espacioOcupado())
+	}
+	test "Menta2 /daNuevasSemillas/ y /espacioOcupado/" {
+		assert.notThat(menta2.daNuevasSemillas())
+		assert.equals(0.9, menta2.espacioOcupado())
+	}
+	test "Tests sobre Soja1" {
+		assert.notThat(soja1.daNuevasSemillas())
+		assert.equals(0.3, soja1.espacioOcupado())
+		assert.equals(7, soja1.horasSolQueTolera())
+	}
+	
+	test "quinoa1 da semillas por /horasSolQueTolera/ > 10" {
+		assert.that(quinoa1.daNuevasSemillas())
+	}
+	
+	test "quinoa2 da semillas por /anioObtencion/ > 2005" {
+		assert.that(quinoa2.daNuevasSemillas())
+	}
+	
+	test "sojaTransgenica1 no /daNuevasSemillas/" {
+		assert.notThat(sojaTransgenica1.daNuevasSemillas())
+	}
+	
+	test "/hierbaBuena1.espacioOcupado/ es el doble que menta1 teniendo los mismos valores" {
+		assert.equals(6, hierbaBuena1.espacioOcupado())
+	}
 }
 
 

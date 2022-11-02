@@ -1,0 +1,20 @@
+import inta.*
+import plantas.*
+import parcelas.*
+
+describe "Test del Inta" {
+	const menta1 = new Menta(altura = 1, anioObtencion = 2010)
+	const menta2 = new Menta(altura = 0.3, anioObtencion = 2010)
+	const soja1 = new Soja(altura = 0.6, anioObtencion = 2009)
+	const quinoa1 = new Quinoa(altura = 1, anioObtencion = 2010, horasSolQueTolera = 12)
+	const quinoa2 = new Quinoa(altura = 1, anioObtencion = 2001, horasSolQueTolera = 9)
+	const sojaTransgenica1 = new SojaTransgenica(altura = 2, anioObtencion = 2009)
+	const hierbaBuena1 = new HierbaBuena(altura = 1, anioObtencion = 2010)
+	
+	const parcela1 = new Parcela(ancho = 20, largo = 1, horasSolPorDia = 7, tipoParcela = ecologica)
+	const parcela2 = new Parcela(ancho = 5, largo = 1, horasSolPorDia = 8, tipoParcela = industrial)
+	const parcela3 = new Parcela(ancho = 5, largo = 2, horasSolPorDia = 7, tipoParcela = ecologica)
+	const parcela4 = new Parcela(ancho = 12, largo = 1, horasSolPorDia = 8, tipoParcela = industrial)
+	const parcela5 = new Parcela(ancho = 4, largo = 2, horasSolPorDia = 8, tipoParcela = ecologica)
+	
+}
