@@ -1,3 +1,6 @@
+/*
+ * Quizás la mejor opcion era tener el método seAsociaBien(unaPlanta) en la parcial y no tenerlo en la planta
+ */
 class Planta {
 	const property anioObtencion
 	var altura
@@ -44,7 +47,7 @@ class Quinoa inherits Planta {
 	override method horasSolQueTolera() = horasSolQueTolera
 	override method daNuevasSemillas() = super() or anioObtencion < 2005
 	override method espacioOcupado() = 0.5
-	override method esParcelaIdeal(unaParcela) = unaParcela.plantasQueTiene().all({p => p.altura() <= 1.5})
+	override method esParcelaIdeal(unaParcela) = unaParcela.plantasQueTiene().all({p => p.altura() < 1.5})
 	
 }
 
