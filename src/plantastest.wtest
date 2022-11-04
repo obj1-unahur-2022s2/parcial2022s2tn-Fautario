@@ -1,3 +1,6 @@
+/*
+ * Buen nivel de covertura de test 
+ */
 import plantas.*
 import parcelas.*
 

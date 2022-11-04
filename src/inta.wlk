@@ -1,5 +1,11 @@
+/*
+ * Faltaba los imports
+ * a
+ */
+import plantas.*
+import parcelas.*
 object inta {
-	var parcelas = []
+	const parcelas = []
 	
 	method promedioPlantasPorParcela() = self.cantidadPlantasEnParcelas() / self.cantidadParcelas()
 	method cantidadPlantasEnParcelas() = parcelas.sum({p => p.plantasQueTiene().size()})
